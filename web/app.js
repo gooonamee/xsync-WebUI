@@ -2353,6 +2353,13 @@ async function addTagToTweet(tweet, rawTagName, cardElement) {
         tweet.tags.push(tagName);
       }
       updateCardTagsDOM(tweet, cardElement);
+      renderContextExistingTags(tweet, cardElement);
+      renderContextQuickTags(tweet, cardElement);
+      if (contextTagInput) {
+        contextTagInput.value = '';
+        contextTagInput.focus();
+      }
+      showToast(`標籤 #${tagName} 已新增`);
       closeContextMenuTagPopup();
       loadTags();
     } else {

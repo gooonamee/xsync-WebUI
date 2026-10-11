@@ -562,7 +562,7 @@ class XSyncHandler(http.server.SimpleHTTPRequestHandler):
         elif path == '/api/batch/tags':
             payload = self.parse_post_json()
             tweet_ids = payload.get('ids', [])
-            tag_name = payload.get('tag', '').strip()
+            tag_name = payload.get('tag', '').strip().lstrip('#')
             action = payload.get('action', 'add') # 'add' or 'remove'
 
             if not tag_name:
